@@ -6,10 +6,10 @@ DOCKERHUB ?= harbor.k8s.temple.edu/tulibraries
 IMAGE_NAME ?= git-sync
 
 build:
-	docker  build  \
-	--tag $(DOCKERHUB)/$(IMAGE_NAME):$(VERSION) \
-	--tag $(IMAGE_NAME):$(VERSION) \
-	--no-cache .
+	@docker  build  \
+		--tag $(DOCKERHUB)/$(IMAGE_NAME):$(VERSION) \
+		--tag $(IMAGE_NAME):$(VERSION) \
+		--no-cache .
 
 run:
 	@docker run\
