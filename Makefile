@@ -1,9 +1,9 @@
 # Defaults
-GIT_MIRROR_URL ?= https://github.com/tulibraries/Press-6
-GIT_SOURCE_URL ?= https://git.temple.edu/tulibraries/Press-6
+IMAGE_NAME ?= git-sync
+GIT_MIRROR_URL ?= https://github.com/tulibraries/$(IMAGE_NAME)
+GIT_SOURCE_URL ?= https://git.temple.edu/tulibraries/$(IMAGE_NAME)
 VERSION ?= latest
 DOCKERHUB ?= harbor.k8s.temple.edu/tulibraries
-IMAGE_NAME ?= git-sync
 
 build:
 	@docker  build  \
