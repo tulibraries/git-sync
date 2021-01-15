@@ -1,7 +1,8 @@
 # Defaults
 IMAGE_NAME ?= git-sync
-GIT_MIRROR_URL ?= https://github.com/tulibraries/$(IMAGE_NAME)
-GIT_SOURCE_URL ?= https://git.temple.edu/tulibraries/$(IMAGE_NAME)
+REPO_NAME ?= tulibraies/$(IMAGE_NAME)
+GIT_MIRROR_URL ?= https://github.com/tulibraries/$(REPO_NAME)
+GIT_SOURCE_URL ?= https://git.temple.edu/tulibraries/$(REPO_NAME)
 VERSION ?= latest
 DOCKERHUB ?= harbor.k8s.temple.edu/tulibraries
 
