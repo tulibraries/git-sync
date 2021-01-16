@@ -17,7 +17,7 @@ run:
 	@docker run\
 		--env GIT_SOURCE_URL=$(GIT_SOURCE_URL) \
 		--env GIT_MIRROR_URL=$(GIT_MIRROR_URL) \
-		git-sync
+		$(IMAGE_NAME)
 
 shell:
 	@docker run\
@@ -26,7 +26,7 @@ shell:
 		--rm -it \
 		--user=root \
 		--entrypoint=sh \
-		git-sync
+		$(IMAGE_NAME)
 
 deploy:
 	docker push $(DOCKERHUB)/$(IMAGE_NAME)
