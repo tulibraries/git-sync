@@ -29,4 +29,4 @@ shell:
 		git-sync
 
 deploy:
-	docker push $(DOCKERHUB)/$(IMAGE_NAME) --all-tags
+	docker push $(DOCKERHUB)/$(IMAGE_NAME)
