@@ -3,8 +3,9 @@ IMAGE_NAME ?= git-sync
 REPO_NAME ?= tulibraies/$(IMAGE_NAME)
 GIT_MIRROR_URL ?= https://github.com/tulibraries/$(REPO_NAME)
 GIT_SOURCE_URL ?= https://git.temple.edu/tulibraries/$(REPO_NAME)
-VERSION ?= 0.1.2
+VERSION ?= 0.1.3
 DOCKERHUB ?= harbor.k8s.temple.edu/tulibraries
+CI ?= foo
 
 build:
 	@docker  build  \
@@ -20,7 +21,7 @@ run:
 		--env GIT_MIRROR_URL=$(GIT_MIRROR_URL) \
 		$(IMAGE_NAME)
 
-security:
+secure:
 	trivy $(DOCKERHUB)/$(IMAGE_NAME):$(VERSION)
 
 shell:
@@ -32,5 +33,10 @@ shell:
 		--entrypoint=sh \
 		$(IMAGE_NAME)
 
-deploy: security
-	docker push $(DOCKERHUB)/$(IMAGE_NAME) --all-tags
+deploy: secure
+	@docker push $(DOCKERHUB)/$(IMAGE_NAME):$(VERSION) \
+	# This "if" statement needs to be a one liner or it will fail.
+	# Do not edit indentation
+	@if [ $(VERSION) != latest ]; then \
+		docker push $(DOCKERHUB)/$(IMAGE_NAME):latest; \
+		fi
