@@ -1,0 +1,3 @@
+include:
+  - project: "infrastructure-engineering-shared/gitlab-ci-templates"
+    file: "lint_docker.yaml"
