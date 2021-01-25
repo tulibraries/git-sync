@@ -12,12 +12,12 @@ pull_origin() {
   fi
 
   cd /tmp/origin
-  git pull origin
+  git pull origin --ff-only
 }
 
 push_mirror() {
   cd /tmp/origin
-  git push mirror
+  git push mirror -f
 }
 
 while true
