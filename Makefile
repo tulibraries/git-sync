@@ -23,7 +23,7 @@ run:
 		--env GIT_MIRROR_URL=$(GIT_MIRROR_URL) \
 		$(IMAGE_NAME)
 
-secure:
+scan:
 	@if [ $(CI) == false ]; \
 		then \
 			trivy $(DOCKERHUB)/$(IMAGE_NAME):$(VERSION); \
@@ -38,7 +38,7 @@ shell:
 		--entrypoint=sh \
 		$(IMAGE_NAME)
 
-deploy: secure, login
+deploy: scan
 	@docker push $(DOCKERHUB)/$(IMAGE_NAME):$(VERSION) \
 	# This "if" statement needs to be a one liner or it will fail.
 	# Do not edit indentation
