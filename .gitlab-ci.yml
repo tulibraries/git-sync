@@ -6,11 +6,12 @@ include:
   - project: "infrastructure-engineering-shared/gitlab-ci-templates"
     file: "security_scan.yaml"
 
-script:
-  - "source .env"
 variables:
   IMAGE: "tulibraries/git-sync"
-  VERSION: "${DOCKER_IMAGE_VERSION}-${CI_BUILD_ID}"
+
+before_script:
+  - source .env
+  - export VERSION="${DOCKER_IMAGE_VERSION}-${CI_BUILD_ID}"
 
 stages:
   - lint
