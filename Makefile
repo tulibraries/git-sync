@@ -1,10 +1,15 @@
 # Defaults
+include .env
+export
+
 IMAGE_NAME ?= git-sync
 PROJECT ?= tulibraries
 REPO_NAME ?= $(PROJECT)/$(IMAGE_NAME)
 GIT_MIRROR_URL ?= https://github.com/$(PROJECT)/$(REPO_NAME)
 GIT_SOURCE_URL ?= https://git.temple.edu/$(PROJECT)/$(REPO_NAME)
-VERSION ?= 0.3.0
+
+# Set DOCKER_IMAGE_VERSION in the .env file OR override by passing in
+DOCKER_IMAGE_VERSION ?= $(DOCKER_IMAGE_VERSION)
 HARBOR ?= harbor.k8s.temple.edu
 DOCKERHUB ?= $(HARBOR)/$(PROJECT)
 CI ?= false
@@ -44,7 +49,7 @@ shell:
 		--entrypoint=sh \
 		$(IMAGE_NAME)
 
-deploy: scan
+deploy: scan lint
 	@docker push $(DOCKERHUB)/$(IMAGE_NAME):$(VERSION) \
 	# This "if" statement needs to be a one liner or it will fail.
 	# Do not edit indentation
