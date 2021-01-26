@@ -8,7 +8,7 @@ include:
 
 artifacts:
     reports:
-      dotenv: deploy.env  
+      dotenv: .env
 
 variables:
   IMAGE: "tulibraries/git-sync"
