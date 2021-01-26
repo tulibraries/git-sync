@@ -4,7 +4,7 @@ PROJECT ?= tulibraries
 REPO_NAME ?= $(PROJECT)/$(IMAGE_NAME)
 GIT_MIRROR_URL ?= https://github.com/$(PROJECT)/$(REPO_NAME)
 GIT_SOURCE_URL ?= https://git.temple.edu/$(PROJECT)/$(REPO_NAME)
-VERSION ?= 0.2.0
+VERSION ?= 0.3.0
 HARBOR ?= harbor.k8s.temple.edu
 DOCKERHUB ?= $(HARBOR)/$(PROJECT)
 CI ?= false
@@ -22,6 +22,12 @@ run:
 		--env GIT_SOURCE_URL=$(GIT_SOURCE_URL) \
 		--env GIT_MIRROR_URL=$(GIT_MIRROR_URL) \
 		$(IMAGE_NAME)
+
+lint:
+	@if [ $(CI) == false ]; \
+		then \
+			hadolint ./Dockerfile; \
+		fi
 
 scan:
 	@if [ $(CI) == false ]; \
