@@ -6,10 +6,6 @@ include:
   - project: "infrastructure-engineering-shared/gitlab-ci-templates"
     file: "security_scan.yaml"
 
-artifacts:
-    reports:
-      dotenv: .env
-
 variables:
   IMAGE: "tulibraries/git-sync"
   VERSION: "${DOCKER_IMAGE_VERSION}-${CI_BUILD_ID}"
@@ -25,6 +21,10 @@ lint:
 build:
   stage: build
   extends: .build_image
+  artifacts:
+      reports:
+        dotenv: .env
+
 
 scan:
   stage: scan
