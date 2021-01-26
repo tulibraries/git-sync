@@ -21,6 +21,8 @@ lint:
 build:
   stage: build
   extends: .build_image
+  variables:
+    VERSION: "${DOCKER_IMAGE_VERSION}-${CI_BUILD_ID}"
   artifacts:
       reports:
         dotenv: .env
