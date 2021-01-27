@@ -12,7 +12,7 @@ before_script:
 
 variables:
   IMAGE: "tulibraries/git-sync"
-  DOCKER_IMAGE_VERSION: "${DOCKER_IMAGE_VERSION}"
+  TAG: "${DOCKER_IMAGE_VERSION}"
 
 stages:
   - lint
@@ -33,10 +33,11 @@ scan:
 
 tag_latest:
   stage: tag
+  variables:
+    TAG: latest
   extends: .tag_image
 
 tag:
   stage: tag
   variables:
-    TAG: $DOCKER_IMAGE_VERSION
   extends: .tag_image
