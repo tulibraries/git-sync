@@ -34,7 +34,7 @@ tag_latest:
   stage: tag
   variables:
     TAG: latest
-  extends: .tag_image
+  extends: .tag_image_latest
 
 tag:
   stage: tag
