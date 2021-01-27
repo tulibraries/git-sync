@@ -38,5 +38,4 @@ tag_latest:
 
 tag:
   stage: tag
-  variables:
   extends: .tag_image
