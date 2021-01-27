@@ -11,7 +11,7 @@ variables:
 
 before_script:
   - source .env
-  - export VERSION="${DOCKER_IMAGE_VERSION}-${CI_BUILD_ID}"
+  - export VERSION="${DOCKER_IMAGE_VERSION}-${CI_COMMIT_SHORT_SHA}"
 
 stages:
   - lint
