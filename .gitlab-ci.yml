@@ -5,13 +5,14 @@ include:
       - "build_docker.yaml"
       - "security_scan.yaml"
 
-variables:
-  IMAGE: "tulibraries/git-sync"
-
 before_script:
   - source .env
-  - export DOCKER_IMAGE_VERSION="$DOCKER_IMAGE_VERSION"
+  - export DOCKER_IMAGE_VERSION
   - export VERSION="${DOCKER_IMAGE_VERSION}-${CI_COMMIT_SHORT_SHA}"
+
+variables:
+  IMAGE: "tulibraries/git-sync"
+  DOCKER_IMAGE_VERSION: $DOCKER_IMAGE_VERSION
 
 stages:
   - lint
