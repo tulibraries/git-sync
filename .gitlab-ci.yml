@@ -17,6 +17,7 @@ stages:
   - lint
   - build
   - scan
+  - tag
 
 lint:
   extends: .lint_docker
@@ -25,7 +26,10 @@ build:
   stage: build
   extends: .build_image
 
-
 scan:
   stage: scan
   extends: .scanimage
+
+tag:
+  stage: tag
+  extends: .tag_image

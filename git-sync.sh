@@ -9,6 +9,7 @@ pull_origin() {
     cd /tmp/origin
 
     git remote add mirror $GIT_MIRROR_URL
+    push_mirror
   fi
 
   cd /tmp/origin
@@ -27,7 +28,6 @@ do
   if [ "$PULL" != "Already up to date." ];
   then
     push_mirror
-  else
     echo $PULL
   fi
 
