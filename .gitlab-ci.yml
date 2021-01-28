@@ -1,9 +1,10 @@
 include:
-  - project: "infrastructure-engineering-shared/gitlab-ci-templates"
+  - project: "tulibraries/gitlab-ci-templates"
     file:
       - "lint_docker.yaml"
       - "build_docker.yaml"
       - "security_scan.yaml"
+    ref: fix-tag-race-condition
 
 before_script:
   - source .env
