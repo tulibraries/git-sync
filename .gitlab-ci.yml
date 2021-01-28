@@ -7,7 +7,7 @@ include:
 
 before_script:
   - source .env
-  - export DOCKER_IMAGE_VERSION="$DOCKER_IMAGE_VERSION"
+  - export TAG="${DOCKER_IMAGE_VERSION}"
   - export VERSION="${DOCKER_IMAGE_VERSION}-${CI_COMMIT_SHORT_SHA}"
 
 variables:
@@ -32,10 +32,10 @@ scan:
 
 tag_latest:
   stage: tag
+  variables:
+    TAG: latest
   extends: .tag_image_latest
 
 tag:
   stage: tag
-  variables:
-    TAG: $DOCKER_IMAGE_VERSION
   extends: .tag_image
