@@ -4,7 +4,7 @@ include:
       - "lint_docker.yaml"
       - "build_docker.yaml"
       - "security_scan.yaml"
-    ref: fix-tag-race-condition
+    ref: fix-slow-scan-issue
 
 before_script:
   - source .env
@@ -30,13 +30,3 @@ build:
 scan:
   stage: scan
   extends: .scanimage
-
-tag_latest:
-  stage: tag
-  variables:
-    TAG: latest
-  extends: .tag_image_latest
-
-tag:
-  stage: tag
-  extends: .tag_image
