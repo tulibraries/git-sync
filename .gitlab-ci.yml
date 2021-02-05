@@ -4,7 +4,7 @@ include:
       - "lint_docker.yaml"
       - "build_docker.yaml"
       - "security_scan.yaml"
-    ref: fix-tag-race-condition
+    ref: "fix-not-supplying-scanoverview-true"
 
 before_script:
   - source .env

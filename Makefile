@@ -9,7 +9,7 @@ GIT_MIRROR_URL ?= https://github.com/$(PROJECT)/$(REPO_NAME)
 GIT_SOURCE_URL ?= https://git.temple.edu/$(PROJECT)/$(REPO_NAME)
 
 # Set DOCKER_IMAGE_VERSION in the .env file OR override by passing in
-DOCKER_IMAGE_VERSION ?= $(DOCKER_IMAGE_VERSION)
+VERSION ?= $(DOCKER_IMAGE_VERSION)
 HARBOR ?= harbor.k8s.temple.edu
 DOCKERHUB ?= $(HARBOR)/$(PROJECT)
 CI ?= false
